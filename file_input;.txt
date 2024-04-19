@@ -1,0 +1,33 @@
+    stazione T = NULL;
+    FILE * file =stdin; // fopen("archivio_test_aperti\\open_1.txt","r");
+    char input[20];
+    int distanza,numAuto,autonomia;
+    int distanza2;
+    int autonomie[NUMCARMAX];
+    while(fscanf(file,"%s",input)!=EOF){
+        if(strcmp(input,"aggiungi-stazione")==0){
+            if(fscanf(file,"%d %d", &distanza, &numAuto)!=EOF){
+                for(int i = 0; i<numAuto;i++){
+                    if(fscanf(file,"%d",&autonomie[i])!=EOF);
+                }
+                T = AggiungiStazione(T,distanza,numAuto,autonomie);
+            }
+        }else if(strcmp(input,"demolisci-stazione")==0){
+            if(fscanf(file,"%d", &distanza)!=EOF) {
+                DemolisciStazione(T, distanza);
+            }
+        }else if(strcmp(input,"aggiungi-auto")==0){
+            if(fscanf(file,"%d %d",&distanza, &autonomia)){
+                AggiungiAuto(T,distanza,autonomia);
+            }
+        }else if(strcmp(input,"rottama-auto")==0){
+            if(fscanf(file,"%d %d",&distanza,&autonomia)){
+                RottamaAuto(T,distanza,autonomia);
+            }
+        }else if(strcmp(input,"pianifica-percorso")==0){
+            if(fscanf(file,"%d %d", &distanza,&distanza2)){
+                PianificaPercorso(T,distanza,distanza2);
+            }
+        }
+
+    }
